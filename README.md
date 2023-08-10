@@ -1,4 +1,4 @@
-## mly-stream-sdk-uniapp
+# mly-stream-sdk-uniapp
 
 ## Initialize
 ​

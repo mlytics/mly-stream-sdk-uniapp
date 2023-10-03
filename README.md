@@ -1,18 +1,20 @@
-# mly-stream-sdk-uniapp
+# mly-stream-sdk-exoplayer-uniapp
 
 ## Initialize
 ​
-```js
+```sh
 const driver = uni.requireNativePlugin('UniMlyDriver');
 driver.initialize({
-	clientID: ""
+	clientID: "YOUR_CLIENT_ID",
+	sampleRate: 1.0
 })
 ```
 ​
+​
 ## Usage
 ​
-```html
-<mlyplayer ref="player" style="width:200;height:100"></mlyplayer>
+```js
+<mlyplayer ref="player" :src="YOUR_VIDEO_URL" :autoplay="true" style="width:200;height:100"></mlyplayer>
 
 ```
 ​
@@ -23,8 +25,10 @@ driver.initialize({
 |---|---|---|---|
 |src|String||play source URL|
 |autoplay|Boolean|true|true: start play when ready|
-|muted|Boolean|false|true: muted|
-|controls|Boolean|true|true: show controls|
+|muted|Boolea|false|true: muted|
+|controls|Boolean|true|true: show contolls|
+|isMonitorAllowed|Boolean|true|true: allow monitor|
+|isLoaderAllowed|Boolean|true|true: allow loader|
 
 ​
 ### mlyplayer functions:

@@ -25,6 +25,24 @@
 				<button class="button" type="primary" @click="controlsClick(false)">Hide</button>
 			</view>
 		</view>
+		<view class="btn">
+			<view style="margin-bottom: 10px;padding-left: 10px;">
+				Monitor Allowed: {{isMonitorAllowed}}
+			</view>
+			<view class="box">
+				<button class="button" type="primary" @click="monitorAllowedClick(true)">Yes</button>
+				<button class="button" type="primary" @click="monitorAllowedClick(false)">No</button>
+			</view>
+		</view>
+		<view class="btn">
+			<view style="margin-bottom: 10px;padding-left: 10px;">
+				Loader Allowed: {{isLoaderAllowed}}
+			</view>
+			<view class="box">
+				<button class="button" type="primary" @click="loaderAllowedClick(true)">Yes</button>
+				<button class="button" type="primary" @click="loaderAllowedClick(false)">No</button>
+			</view>
+		</view>
 	</view>
 </template>
 
@@ -34,12 +52,14 @@
 		data() {
 			return {
 				muted: false,
-				controls: true
+				controls: true,
+				isMonitorAllowed: true,
+				isLoaderAllowed: true,
 			}
 		},
 		onLoad() {
 			if (driver) {
-				driver.initialize({clientID: "cegh8d9j11u91ba1u600"})
+				driver.initialize({clientID: "cegh8d9j11u91ba1u600", debug: true, sampleRate: 0.5})
 			}
 		},
 		onHide() {
@@ -65,6 +85,14 @@
 			controlsClick(controls) {
 				this.controls = controls
 				uni.$emit('controls',controls)
+			},
+			monitorAllowedClick(b) {
+				this.isMonitorAllowed = b
+				uni.$emit('isMonitorAllowed',b)
+			},
+			loaderAllowedClick(b) {
+				this.isLoaderAllowed = b
+				uni.$emit('isLoaderAllowed',b)
 			}
 		}
 	}
